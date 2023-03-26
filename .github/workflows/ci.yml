@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: fetch host ip
-      run: echo $(hostname -i)
+      run: echo $(ifcconfig)
     - name: Build the Docker image
       run: docker build -t node-img .
     - name: Run docker container
