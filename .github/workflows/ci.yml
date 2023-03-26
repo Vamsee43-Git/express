@@ -18,5 +18,8 @@ jobs:
       run: echo $(curl ifconfig.me)
     - name: Build the Docker image
       run: docker build -t node-img .
-    - name: Run docker container
-      run: docker run -d -p 4000:3000 node-img
+      run: docker tag node-img vamseedocker243/nodejs-app 
+    - name: push docker image
+      run: docker login -u vamseedocker243 -p @GODwill43 
+      run: docker push vamseedocker243/nodejs-app
+    
