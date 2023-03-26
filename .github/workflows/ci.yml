@@ -17,9 +17,9 @@ jobs:
     - name: fetch host ip
       run: echo $(curl ifconfig.me)
     - name: Build the Docker image
-      run: docker build -t node-img .
-      run: docker tag node-img vamseedocker243/nodejs-app 
-    - name: push docker image
+      run: docker build -t vamseedocker243/nodejs-app .
+    - name: login to dockerhub
       run: docker login -u vamseedocker243 -p @GODwill43 
+    - name: push image
       run: docker push vamseedocker243/nodejs-app
     
