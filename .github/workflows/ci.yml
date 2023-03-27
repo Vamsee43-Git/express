@@ -28,4 +28,11 @@ jobs:
       run: docker login -u vamseedocker243 -p @GODwill43 
     - name: push image
       run: docker push vamseedocker243/nodejs-app
+    - name: Log in to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+    - name: Push Docker image to Amazon ECR
+      run: |
+        docker tag my-image ${{ steps.login-ecr.outputs.registry }}/${{ github.repository }}:${{ github.sha }}
+        docker push ${{ steps.login-ecr.outputs.registry }}/${{ github.repository }}:${{ github.sha }}
     
